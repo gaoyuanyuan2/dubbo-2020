@@ -1,0 +1,13 @@
+server:
+  port: 8088
+
+## Dubbo 服务消费者配置
+spring:
+  dubbo:
+    application:
+      name: dubbo-consumer
+    protocol:
+      name: dubbo
+      port: 20880
+    registry:
+      address: zookeeper://127.0.0.1:2181
