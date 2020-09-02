@@ -2,9 +2,13 @@ package com.example.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.example.common.DemoService;
+import com.example.dto.OrderDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class TestController {
@@ -25,5 +29,16 @@ public class TestController {
 
         return ret_msg;
     }
+
+    @Autowired
+    private LogicServiceImpl testService;
+
+    @GetMapping("/hystrix/test")
+    public List<OrderDto> hystrixTest() {
+        return testService.getOrderList();
+    }
+
+
+
 
 }
